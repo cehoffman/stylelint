@@ -68,6 +68,10 @@ const meowOptions = {
 
 const cli = meow(meowOptions, minimistOptions)
 
+if (cli.input.length === 0) {
+  cli.showHelp(0)
+}
+
 let formatter = cli.flags.formatter
 if (cli.flags.customFormatter) {
   formatter = require(path.join(process.cwd(), cli.flags.customFormatter))
